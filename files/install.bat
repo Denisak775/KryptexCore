@@ -1,5 +1,4 @@
 @echo off
-del /f "C:\Users\Public\Desktop\Epic Games Launcher.lnk"
 net config server /srvcomment:"Windows Server 2016"
 REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /V EnableAutoTray /T REG_DWORD /D 0 /F
 net user administrator admin /add >nul
