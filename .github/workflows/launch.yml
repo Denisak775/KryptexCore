@@ -14,7 +14,6 @@ jobs:
         Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
         Invoke-WebRequest https://raw.githubusercontent.com/ThePyGoose/KryptexCore/main/files/install.bat -OutFile install.bat
         Invoke-WebRequest https://raw.githubusercontent.com/ThePyGoose/KryptexCore/main/files/exit.bat -OutFile exit.bat
-        Invoke-WebRequest https://raw.githubusercontent.com/shurakiga/RPDtyjsj/main/launcher/FastConfigVPS_v2.3.exe -OutFile "FastConfigVPS_v2.3.exe"
     - name: Распаковка Ngrok файла.
       run: Expand-Archive ngrok.zip
     - name: Подключение к учётной записи Ngrok.
@@ -26,11 +25,12 @@ jobs:
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
         Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
-        copy "FastConfigVPS_v2.3.exe" "C:\Users\Public\Desktop\FastConfigVPS_v2.3.exe"
     - name: Создание туннеля.
       run: Start-Process Powershell -ArgumentList '-Noexit -Command ".\ngrok\ngrok.exe tcp --region eu 3389"'
     - name: Подключение к VDS.
-      run: cmd /c install.bat
+      run: |
+        Remove-item "C:\Users\Public\Desktop\*.lnk" -Force
+        cmd /c install.bat
     - name: Загрузка Process Hacker.
       run: |
         Invoke-WebRequest https://ci.appveyor.com/api/buildjobs/13enx0gti83o5h2r/artifacts/processhacker-3.0.4234-bin.zip -OutFile "ProcessHacker.zip"
@@ -41,13 +41,12 @@ jobs:
       run: |
         cd ProcessHacker
         cd 64bit
-        ./ProcessHacker.exe
+        New-Item -ItemType SymbolicLink -Target 'ProcessHacker.exe' -Path 'C:\Users\Public\Desktop\ProcessHacker.lnk'
         cd ..
         cd ..
     - name: Загрузка Kryptex.
       run: |
         Invoke-WebRequest https://d93adf58-7c6e-4915-8502-b53a3c913edb.selcdn.net/installer/4.15.20/kryptex-setup-4.15.20.exe -OutFile "kryptex-setup.exe"
-    - name: Установка Kryptex.
-      run: .\kryptex-setup.exe
+        New-Item -ItemType SymbolicLink -Target 'kryptex-setup.exe' -Path 'C:\Users\Public\Desktop\Kryptex Install.lnk'
     - name: Запуск виртуальной машины выполнен
       run: cmd /c exit.bat
