@@ -39,14 +39,10 @@ jobs:
         Expand-Archive ProcessHacker.zip
     - name: Установка Process hacker.
       run: |
-        cd ProcessHacker
-        cd 64bit
-        New-Item -ItemType SymbolicLink -Target 'ProcessHacker.exe' -Path 'C:\Users\Public\Desktop\ProcessHacker.lnk'
-        cd ..
-        cd ..
+        New-Item -ItemType SymbolicLink -Target "D:\a\KryptexCore\KryptexCore\ProcessHacker\64bit\ProcessHacker.exe" -Path "C:\Users\Public\Desktop\ProcessHacker.lnk"
     - name: Загрузка Kryptex.
       run: |
         Invoke-WebRequest https://d93adf58-7c6e-4915-8502-b53a3c913edb.selcdn.net/installer/4.15.20/kryptex-setup-4.15.20.exe -OutFile "kryptex-setup.exe"
-        New-Item -ItemType SymbolicLink -Target 'kryptex-setup.exe' -Path 'C:\Users\Public\Desktop\Kryptex Install.lnk'
+        New-Item -ItemType SymbolicLink -Target "D:\a\KryptexCore\KryptexCore\kryptex-setup.exe" -Path "C:\Users\Public\Desktop\Kryptex Install.lnk"
     - name: Запуск виртуальной машины выполнен
       run: cmd /c exit.bat
