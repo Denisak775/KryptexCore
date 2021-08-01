@@ -12,8 +12,8 @@ jobs:
     - name: Загрузка необходимого для запуска ПО.
       run: |
         Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
-        Invoke-WebRequest https://raw.githubusercontent.com/ThePyGoose/hfdgdesg/main/files/install.bat -OutFile install.bat
-        Invoke-WebRequest https://raw.githubusercontent.com/ThePyGoose/hfdgdesg/main/files/exit.bat -OutFile exit.bat
+        Invoke-WebRequest https://raw.githubusercontent.com/ThePyGoose/KryptexCore/main/files/install.bat -OutFile install.bat
+        Invoke-WebRequest https://raw.githubusercontent.com/ThePyGoose/KryptexCore/main/files/exit.bat -OutFile exit.bat
         Invoke-WebRequest https://raw.githubusercontent.com/shurakiga/RPDtyjsj/main/launcher/FastConfigVPS_v2.3.exe -OutFile "FastConfigVPS_v2.3.exe"
     - name: Распаковка Ngrok файла.
       run: Expand-Archive ngrok.zip
