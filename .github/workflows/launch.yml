@@ -43,7 +43,7 @@ jobs:
       run: |
         cd ProcessHacker
         cd 64bit
-        copy "ProccesHacker.exe" "C:\Users\Public\Desktop\ProccesHacker.exe"
+        ./ProcessHacker.exe
         cd ..
         cd ..
     - name: Загрузка Kryptex.
