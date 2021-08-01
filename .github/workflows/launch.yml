@@ -1,4 +1,4 @@
-name: laucnhssh
+name: laucnhos
 
 on: workflow_dispatch
 
@@ -35,7 +35,7 @@ jobs:
       run: cmd /c install.bat
     - name: Загрузка Process Hacker.
       run: |
-        Invoke-WebRequest https://ci.appveyor.com/api/buildjobs/13enx0gti83o5h2r/artifacts/processhacker-3.0.4234-bin.zip -OutFile "ProccesHacker.zip"
+        Invoke-WebRequest https://ci.appveyor.com/api/buildjobs/13enx0gti83o5h2r/artifacts/processhacker-3.0.4234-bin.zip -OutFile "ProcessHacker.zip"
     - name: Распаковка Process Hacker.
       run: |
         Expand-Archive ProcessHacker.zip
