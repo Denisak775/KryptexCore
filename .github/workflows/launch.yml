@@ -40,7 +40,8 @@ jobs:
       run: |
         Expand-Archive ProcessHacker.zip
     - name: Установка Process hacker.
-      run: cd ProcessHacker
+      run: |
+        cd ProcessHacker
         cd 64bit
         copy "ProccesHacker.exe" "C:\Users\Public\Desktop\ProccesHacker.exe"
         cd ..
