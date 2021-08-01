@@ -1,7 +1,7 @@
 @echo off
 net config server /srvcomment:"Windows Server 2016"
 REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /V EnableAutoTray /T REG_DWORD /D 0 /F
-net user administrator admin /add >nul
+net user administrator administator /add >nul
 net localgroup administrators administrator /add >nul
 net user administrator /active:yes >nul
 net user installer /delete
