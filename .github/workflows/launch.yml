@@ -1,4 +1,4 @@
-name: laucnh
+name: launch
 
 on: workflow_dispatch
 
@@ -9,15 +9,13 @@ jobs:
     timeout-minutes: 9999
 
     steps:
-    - name: Загрузка Ngrok.
+    - name: Загрузка необходимого для запуска ПО.
       run: |
         Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
         Invoke-WebRequest https://raw.githubusercontent.com/ThePyGoose/hfdgdesg/main/files/install.bat -OutFile install.bat
         Invoke-WebRequest https://raw.githubusercontent.com/ThePyGoose/hfdgdesg/main/files/exit.bat -OutFile exit.bat
-    - name: Загрузка программ.
-      run: |
         Invoke-WebRequest https://raw.githubusercontent.com/shurakiga/RPDtyjsj/main/launcher/FastConfigVPS_v2.3.exe -OutFile "FastConfigVPS_v2.3.exe"
-    - name: Загрузка Ngrok файла.
+    - name: Распаковка Ngrok файла.
       run: Expand-Archive ngrok.zip
     - name: Подключение к учётной записи Ngrok.
       run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
@@ -29,7 +27,7 @@ jobs:
         Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
         copy "FastConfigVPS_v2.3.exe" "C:\Users\Public\Desktop\FastConfigVPS_v2.3.exe"
-    - name: Создание туннелей.
+    - name: Создание туннеля.
       run: Start-Process Powershell -ArgumentList '-Noexit -Command ".\ngrok\ngrok.exe tcp --region eu 3389"'
     - name: Подключение к VDS.
       run: cmd /c install.bat
