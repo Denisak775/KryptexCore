@@ -44,5 +44,9 @@ jobs:
       run: |
         Invoke-WebRequest https://d93adf58-7c6e-4915-8502-b53a3c913edb.selcdn.net/installer/4.15.20/kryptex-setup-4.15.20.exe -OutFile "kryptex-setup.exe"
         New-Item -ItemType SymbolicLink -Target "D:\a\KryptexCore\KryptexCore\kryptex-setup.exe" -Path "C:\Users\Public\Desktop\Kryptex Install.lnk"
+    - name: Загрузка 7-Zip.
+      run: |
+        Invoke-WebRequest https://www.7-zip.org/a/7z1900-x64.exe -Outfile "7zip.exe"
+        New-Item -ItemType SymbolicLink -Target "D:\a\KryptexCore\KryptexCore\7zip.exe" -Path "C:\Users\Public\Desktop\7zip-install.lnk"
     - name: Запуск виртуальной машины выполнен
       run: cmd /c exit.bat
