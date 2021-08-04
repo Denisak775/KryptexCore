@@ -16,5 +16,5 @@ tasklist | find /i "ngrok.exe" >Nul && curl -s localhost:4040/api/tunnels | jq -
 echo "Репозиторий KryptexCore - https://github.com/ThePyGoose/KryptexCore/"
 echo Username: administrator
 echo Password: @admin69
-echo  RDP is Launch
+echo RDP is Launch
 ping -n 10 127.0.0.1 >nul
